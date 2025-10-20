@@ -1,0 +1,29 @@
+      .hero-image {
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+        height: 400px;
+        margin: 50px auto;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+        .hero-image:hover {
+        transform: scale(1.02);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      }
+      .home_h1 {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 2.5rem;
+        color: #333;
+      }
