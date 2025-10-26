@@ -101,14 +101,3 @@ def search_recipe(keyword):
     return results
 
 
-#  Example Demo 
-# This part runs only if you execute the file directly.
-# It shows how each function works.
-if __name__ == "__main__":
-    print(add_recipe("Spaghetti", "Italian pasta", "pasta, sauce, salt", "Boil pasta, mix sauce"))
-    print(add_recipe("Pancakes", "Fluffy breakfast", "flour, eggs, milk", "Mix and fry"))
-    print(view_all_recipes())
-    print(search_recipe("spa"))
-    print(edit_recipe(1, new_description="Delicious tomato pasta"))
-    print(delete_recipe(2))
-    print(view_all_recipes())
