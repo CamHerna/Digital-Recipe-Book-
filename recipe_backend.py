@@ -11,7 +11,7 @@ recipes = []
 recipe_id_counter = 1
 
 
-def add_recipe(title, description, ingredients, instructions):
+def add_recipe(title, description, ingredients, instructions, is_user_made=True):
     """
     Adds a new recipe to the list.
     Checks if title, ingredients, and instructions are not empty.
@@ -29,6 +29,7 @@ def add_recipe(title, description, ingredients, instructions):
         "ingredients": ingredients.strip(),
         "instructions": instructions.strip(),
         "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        "is_user_made": bool(is_user_made) 
     }
 
     recipes.append(recipe)
