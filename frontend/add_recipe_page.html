@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Recipe</title>
+    <link rel="stylesheet" href="../frontend/add_recipe_page.css" />
+</head>
+<body>
+<div class="add-recipe-container">
+    <h1>Add a Recipe</h1>
+
+    <form action="http://127.0.0.1:5000/add_recipe" method="POST" enctype="multipart/form-data">
+        <label for="title">Recipe Title</label>
+        <input type="text" id="title" name="title" placeholder="Enter recipe title" required />
+
+        <label for="description">Recipe Description</label>
+        <textarea id="description" name="description" placeholder="Briefly describe your recipe..." rows="3" required></textarea>
+
+        <label for="image">Upload Image</label>
+        <div class="image-upload" onclick="document.getElementById('image').click();">
+            <p>Click to upload an image</p>
+            <input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)" />
+            <img id="preview" class="preview" alt="Recipe image preview" style="display:none;" />
+        </div>
+
+        <label>Ingredients</label>
+        <div id="ingredients-list">
+            <div class="ingredient-item">
+                <input type="text" name="ingredients[]" placeholder="e.g. 2 cups flour" required />
+                <button type="button" class="remove-btn" onclick="removeItem(this)">×</button>
+            </div>
+        </div>
+        <button type="button" class="add-btn" onclick="addIngredient()">+ Add Ingredient</button>
+
+        <label>Instructions</label>
+        <div id="instructions-list">
+            <div class="instruction-item">
+                <input type="text" name="instructions[]" placeholder="e.g. Mix all dry ingredients" required />
+                <button type="button" class="remove-btn" onclick="removeItem(this)">×</button>
+            </div>
+        </div>
+        <button type="button" class="add-btn" onclick="addInstruction()">+ Add Step</button>
+
+        <button type="submit">Add Recipe</button>
+    </form>
+</div>
+
+<script>
+    function previewImage(event) {
+        const preview = document.getElementById("preview");
+        const file = event.target.files[0];
+        if (file) {
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = "block";
+        }
+    }
+
+    function addIngredient() {
+        const list = document.getElementById("ingredients-list");
+        const item = document.createElement("div");
+        item.className = "ingredient-item";
+        item.innerHTML = `
+        <input type="text" name="ingredients[]" placeholder="e.g. 1 tsp salt" required />
+        <button type="button" class="remove-btn" onclick="removeItem(this)">×</button>
+      `;
+        list.appendChild(item);
+    }
+
+    function addInstruction() {
+        const list = document.getElementById("instructions-list");
+        const item = document.createElement("div");
+        item.className = "instruction-item";
+        item.innerHTML = `
+        <input type="text" name="instructions[]" placeholder="e.g. Bake for 20 minutes" required />
+        <button type="button" class="remove-btn" onclick="removeItem(this)">×</button>
+      `;
+        list.appendChild(item);
+    }
+
+    function removeItem(button) {
+        button.parentElement.remove();
+    }
+</script>
+</body>
+</html>
