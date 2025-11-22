@@ -1,35 +1,60 @@
 from datetime import datetime
 from db import get_db_connection
-
+from mysql.connector import Error
 
 
 # ADD RECIPE (SQL INSERT)
 
-def add_recipe(title, description, ingredients, instructions, is_user_made=True):
+def add_recipe(title, description, ingredients, instructions, image_path=None, is_user_made=True):
     if not title or not ingredients or not instructions:
-        return "Error: Title, ingredients, and instructions are required."
+        return {"success": False, "message": "Title, ingredients, and instructions are required."}
 
     conn = get_db_connection()
-    if not conn:
-        return "Database connection failed."
-
+    if conn is None:
+        return {"success": False, "message": "Database connection failed."}
+        
     cursor = conn.cursor()
 
-    sql = """
-    INSERT INTO recipes (title, description, ingredients, instructions, is_sample_data)
-    VALUES (%s, %s, %s, %s, %s)
-    """
-    
-    values = (title, description, ingredients, instructions, int(is_user_made))
-    cursor.execute(sql, values)
-    
-    conn.commit()
-    new_id = cursor.lastrowid
+    try:
+        sql = """
+            INSERT INTO recipes (
+                title,
+                description,
+                ingredients,
+                instructions,
+                created_at,
+                image_path,
+                is_sample_data
+            )
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+        """
 
-    cursor.close()
-    conn.close()
+        created_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    return f"Recipe {new_id} added successfully!"
+        is_sample_data = 0 if is_user_made else 1
+
+        values = (title, description, ingredients, instructions, created_time, image_path, is_sample_data)
+        
+        cursor.execute(sql, values)
+    
+        conn.commit()
+        new_id = cursor.lastrowid
+
+        return {
+            "success" : True,
+            "message": "Recipe added successfully!",
+            "recipe_id": new_id
+        }
+
+    except Error as e:
+        conn.rollback()
+        return {
+            "success" : False,
+            "message" : f"Database error: {str(e)}"
+        }
+    finally:    
+        cursor.close()
+        conn.close()
 
 
 
