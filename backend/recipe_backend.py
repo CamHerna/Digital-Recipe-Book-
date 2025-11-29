@@ -175,3 +175,35 @@ def search_recipe(keyword):
     conn.close()
 
     return results if results else []
+
+def get_recipe(recipe_id):
+    if not recipe_id:
+        return {"success": False, "message": "Valid recipe ID is required."}
+        
+    conn = get_db_connection()
+    if not conn:
+        return {"success": False, "message": "Database connection failed."} 
+        
+    cursor = conn.cursor(dictionary=True)
+
+    try: 
+        sql = "SELECT * FROM recipes WHERE recipe_id = %s"
+        cursor.execute(sql, (recipe_id,))
+        row = cursor.fetchone()
+
+        if row is None:
+            return {"success" : False, "message" : "Recipe not found." }
+
+        return {"success" : True, "recipe": row}
+
+    except Error as e:
+        return {"success" : False, "message" : f"Database error:{str(e)}"}
+
+    finally:
+        cursor.close()
+        conn.close()
+
+
+
+
+    
