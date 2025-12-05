@@ -6,7 +6,7 @@
         margin: 50px auto;
         border-radius: 15px;
         overflow: hidden;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
@@ -17,13 +17,107 @@
         transition: transform 0.3s ease;
       }
 
-        .hero-image:hover {
+      .hero-image:hover {
         transform: scale(1.02);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
       }
+
       .home_h1 {
         text-align: center;
         margin-top: 50px;
         font-size: 2.5rem;
         color: #333;
       }
+
+  
+
+      .custom-nav {
+        background-color: #ffffff !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      /* --- Clean Footer --- */
+.footer {
+  background-color: #e9ecef;
+  padding: 10px 0;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #ccc;
+}
+
+/* Make body a flex column so footer can stick to bottom */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f8f9fa; /* Your page background */
+}
+
+/* Push content to fill space above footer */
+.container {
+  flex: 1;
+  
+}
+
+/* --- Sidebar --- */
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: 56px; /* height of Bootstrap navbar (adjust if different) */
+  width: 230px;
+  height: calc(100vh - 56px); /* fills from below navbar to bottom */
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-left: 1px solid #ddd;
+  overflow-y: auto;
+}
+
+/* Sidebar typography */
+.sidebar h5 {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.sidebar p {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: #e9ecef;
+  padding: 10px 0;
+  border-top: 1px solid #ccc;
+  width: 100%;
+  text-align: center;
+  position: fixed; /* Sticks at bottom */
+  bottom: 0;
+  left: 0;
+}
+
+.footer a {
+  margin: 0 10px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.main-content {
+  margin-right: 250px; /* Width of sidebar + some spacing */
+  padding: 20px;
+}
+
+.footer-text {
+  margin-right: 250px; /* Width of sidebar + some spacing */
+}
+
+explore {
+  margin-bottom: 80px; /* Space for footer */
+  
+}
+
+
