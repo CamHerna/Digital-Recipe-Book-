@@ -1,0 +1,182 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Background similar to homepage */
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 100px 20px;
+}
+
+/* Main container (card style) */
+.add-recipe-container {
+    background: #fff;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 16px;
+    padding: 40px 45px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    font-size: 2.3rem;
+    color: #222;
+    margin-bottom: 30px;
+}
+
+/* Labels */
+label {
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 6px;
+}
+
+/* Inputs & Textareas */
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fdfdfd;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #888;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+/* Image Upload */
+.image-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #ccc;
+    border-radius: 12px;
+    padding: 25px;
+    background-color: #fafafa;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.image-upload:hover {
+    background-color: #f3f3f3;
+    border-color: #888;
+}
+
+.preview {
+    margin-top: 15px;
+    width: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Dynamic item rows */
+.ingredient-item,
+.instruction-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.ingredient-item input,
+.instruction-item input {
+    flex: 1;
+}
+
+/* Add and Remove buttons */
+.add-btn {
+    background-color: #e9ecef;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 10px;
+}
+
+.add-btn:hover {
+    background-color: #dcdfe3;
+}
+
+.remove-btn {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 0 12px;
+    transition: background-color 0.3s;
+}
+
+.remove-btn:hover {
+    background-color: #b02a37;
+}
+
+/* Submit button */
+button[type="submit"] {
+    background-color: #343a40;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #23272b;
+    transform: scale(1.02);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .add-recipe-container {
+        padding: 25px 20px;
+    }
+
+    h1 {
+        font-size: 1.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .add-recipe-container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    input,
+    textarea {
+        font-size: 15px;
+    }
+}
